@@ -1,0 +1,100 @@
+/*  CSS RESET  */
+
+/* makes sizing simpler */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* remove default spacing */
+/* force styling of type through styling, rather than elements */
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* dark mode user-agent-styles */
+
+html {
+  color-scheme: dark light;
+}
+
+/* min body height */
+
+body {
+  min-height: 100vh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/*  /CSS RESET  */
+
+body {
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-container {
+  margin: auto;
+  border: 1px solid cyan;
+  max-width: 90vw;
+}
+#screen {
+  margin: 1.3rem;
+  /* padding: 1rem; */
+  border: 1px solid magenta;
+}
+#display {
+  margin: 0.2rem;
+  /* padding: 1rem; */
+  border: 1px solid cyan;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+#display span {
+  flex: 1 1 0;
+  color: rgb(111, 221, 0);
+  font-family: 'DS-Digital', sans-serif;
+  font-size: 5rem;
+  text-shadow: 0 0 1rem #80ff00, 0 0 3rem #6fdd00, 0 0 6rem #60c000, 0 0 10rem #55aa00;
+}
+
+#buttons {
+  margin-bottom: 2rem;
+}
+
+#buttons .row {
+  margin: 0 2rem;
+  padding: 0.5rem;
+  border: 1px solid magenta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+  aspect-ratio: 4 / 1;
+}
+
+
+.button {
+  border-style: none;
+  border-radius: 1rem;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1; 
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2rem;
+}
