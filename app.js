@@ -39,8 +39,13 @@ buttons.addEventListener('click', btnClick)
 
 function btnClick(e){
     if(e.target.className === "button"){
-        console.log(e.target);
-        // displayContent.textContent = e.target.textContent;
+        console.log(e.target.textContent);
+        if(displayContent.textContent === 'Calculator'){
+            displayContent.textContent = '';
+        }
+        displayContent.textContent += e.target.textContent;
     }
     e.stopPropagation();
+    console.log(displayContent);
+    // return displayContent;
 }

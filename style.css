@@ -48,53 +48,92 @@ body {
 }
 
 #main-container {
-  margin: auto;
-  border: 1px solid cyan;
-  max-width: 90vw;
-}
-#screen {
-  margin: 1.3rem;
-  /* padding: 1rem; */
-  border: 1px solid magenta;
-}
-#display {
-  margin: 0.2rem;
-  /* padding: 1rem; */
+  width: 70vw;
   border: 1px solid cyan;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  flex-direction: column;
 }
-#display span {
-  flex: 1 1 0;
+
+
+#display {
+  margin: 0.5rem 0.5rem 0;
+  border: 1px solid magenta;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  
+}
+
+#display-content {
+  margin: 0.5rem;
   color: rgb(111, 221, 0);
   font-family: 'DS-Digital', sans-serif;
-  font-size: 5rem;
+  font-size: 2rem;
   text-shadow: 0 0 1rem #80ff00, 0 0 3rem #6fdd00, 0 0 6rem #60c000, 0 0 10rem #55aa00;
+  max-width: 100%;
+  word-break: break-all;
 }
 
 #buttons {
-  margin-bottom: 2rem;
+  margin: 0.5rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid cyan;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 #buttons .row {
-  margin: 0 2rem;
-  padding: 0.5rem;
   border: 1px solid magenta;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-around;
   aspect-ratio: 4 / 1;
+  flex: 1 1 1;
+  width: 100%;
+  gap: 0.5rem;
 }
 
-
-.button {
+button {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex: 1;
   border-style: none;
   border-radius: 1rem;
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 1; 
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 2rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 450px) {
+  body {
+    max-height: 100vh;
+  }
+  #main-container {
+    width: 45vh;
+    margin: 25vw;
+  }
+  #display {
+    margin: 1rem 1rem 0;
+  }
+
+  #display-content {
+    margin: 0.5rem;
+    font-size: 4rem;   
+  }
+  #buttons {
+    margin: 1rem;   
+    gap: 1rem;
+    padding: 1rem;
+  }
+  #buttons .row {
+    gap: 1rem;
+  }
+
+  button { 
+    border-radius: 2rem;
+    font-size: 2rem;
+  }
 }
