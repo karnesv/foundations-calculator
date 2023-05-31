@@ -36,7 +36,7 @@ function operate(op, n1, n2){
 const buttons = document.querySelector('#buttons');
 const displayContent = document.querySelector('#display-content');
 
-
+// collect button names
 const coll = buttons.querySelectorAll('button');
 const collection = {};
 function collect(){
@@ -46,7 +46,7 @@ function collect(){
 }
 collect()
 
-
+// main button event listener
 buttons.addEventListener('click', btnClick)
 function btnClick(e){
     console.log(e.target.className)
