@@ -1,22 +1,30 @@
 let num1;
 let num2;
 let num3;
+let numStr = '';
 let operator;
 
 function add(num1, num2){   
-    return num3 = num1 + num2;
+    num3 = Number(num1) + Number(num2);
+    displayContent.textContent = num3;
 }
 function subtract(num1, num2){
-    return num3 = num1 - num2;
+    num3 = Number(num1) - Number(num2);
+    displayContent.textContent = num3;
 }
 function multiply(num1, num2){
-    return num3 = num1 * num2;
+    num3 = Number(num1) * Number(num2);
+    displayContent.textContent = num3;
 }
 function divide(num1, num2){
-    return num3 = num1 / num2;
+    num3 = Number(num1) / Number(num2);
+    displayContent.textContent = num3;
 }
 
 function operate(op, n1, n2){
+    if(op === '' || n1 === '' || n2 === ''){
+        return;
+    }
     operator = op;
     num1 = n1;
     num2 = n2;
@@ -49,75 +57,80 @@ collect()
 // main button event listener
 buttons.addEventListener('click', btnClick)
 function btnClick(e){
-    console.log(e.target.className)
-    if(e.target.className !== "button"){
-        // e.stopPropagation();
+    // console.log(e.target.classList)
+    if(!e.target.classList.contains("button")){
+        e.stopPropagation();
         return;
     }
     if(displayContent.textContent === 'Calculator'){
         displayContent.textContent = '';
     }
-    if(e.target.className === "num"){
+    if(e.target.classList.contains("num")){
         let dispNum = e.target.textContent;
-        console.log(dispNum)
-        num(e.target.textContent)
+        return preNum(dispNum);
     }
-    if(e.target.className === "opera"){
+    num(numStr)
+    if(e.target.classList.contains("opera")){
         let dispOpera = e.target.textContent;
-        opera(e.target.textContent)
+        opera(dispOpera);
     }
-    if(e.target.className === "equal"){
-        let dispEqual = e.target.textContent;
+    if(e.target.classList.contains("equal") && num1 && num2){
+        console.log('eq')
         equal()
     }
-    if(e.target.className === "clear"){
-        let clearFunc = e.target.textContent;
+    if(e.target.classList.contains("clear")){
         clear();
     }
-    displayContent.textContent = e.target.textContent;
+    // if(!e.target.classList.contains("equal") && !e.target.classList.contains("clear")){
+    //     displayContent.textContent = e.target.textContent;
+    // }
+}
+
+function preNum(pN){
+    numStr += pN;
+    displayContent.textContent = numStr;
 }
 
 function num (n){
+    // console.log(n)
     if(num3){
         num1 = num3;
-        num2 = n;
+        num2 = numStr;
         operate(operator, num1, num2);
     }
     if(num2 === undefined && num1){
-        num2 = n;
+        num2 = numStr; 
         operate(operator, num1, num2);
     }
     if(!num1){
-        num1 = n;
+        num1 = numStr;
     }
-    displayContent.textContent = num1 + (operator ? operator : "") + (num2 ? num2 : "");
-
-}
+    console.log(n)
+    numStr = '';
+};
 
 function opera (o){
-    if(!operator){
-        const opList = {
-            "+": add,
-            "&#120;": multiply,
-            "&#45;": subtract,
-            "÷": divide
-        };
-        if(o === opList[o]){
-            operator = opList[o];
-        };   
+    const opList = {
+        "+": add,
+        "x": multiply,
+        "-": subtract,
+        "÷": divide
+    };
+   
+    if (opList[o] !== undefined) {
+        operator = opList[o];
     }
-    displayContent.textContent = num1 + (operator ? operator : "") + (num2 ? num2 : "");
 }
 
 function equal (){
     operate(operator, num1, num2)
-    displayContent.textContent = num3;
 }
 
 function clear (){
     num1 = undefined;
     num2 = undefined;
     num3 = undefined;
+    numStr = '';
     operator = undefined;
     displayContent.textContent = 'Calculator';
 }
